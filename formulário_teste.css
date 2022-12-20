@@ -1,3 +1,45 @@
-h1{
-    background-color: red;
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Fredoka+One&family=Rubik+Spray+Paint&display=swap');
+
+.title{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+    
+    
+
+}
+
+.titulo{
+   font-family: 'Rubik Spray Paint', cursive;
+   margin-bottom: 50px;
+   font-size: 50px;
+   color: rgb(8, 207, 207);
+}
+  
+   
+
+div {
+   
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+.container{
+    background-color: rgb(21, 244, 244);
+}
+
+body{
+    background-image:linear-gradient(to right, rgb(20, 114, 114), rgb(9, 53, 53));
+}
+.row{ 
+    background-image:linear-gradient(to right, rgb(20, 114, 114), rgb(9, 53, 53));
+}
+
+.panel {
+    background-image:linear-gradient(to right, rgb(17, 96, 96), rgb(7, 39, 39));
+    font-size: 20px;
+    border: none;
+    color:rgb(0, 0, 0);
+
+ }
+
+#titulo2{
+    font-family: 'Fredoka One', cursive;
+    color: rgb(26, 25, 25);
 }
