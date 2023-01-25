@@ -15,6 +15,31 @@
 <script>
     $(function () {
 
+        
+        $(document).on('click','#btnEditar' ,function () { // assinar evento de click 
+            
+            var posicao = $(this).attr('alt') // registrar posição de cada button 
+            
+            var estoqueStorage = JSON.parse(localStorage.getItem('stoqx')) // recuperar dados do local storage
+            
+            var static = (estoqueStorage[posicao]) // achar a posição e valor especifico(dado preciso do registro)
+
+            $('#item').val(static.item)
+            $('#entrada').val(static.entrada)   // visao usuário: dados setados nos campos respectivos por referência  
+            $('#saida').val(static.saida)
+            $('#estoque').val(static.estoque)
+
+            // em vez de substituir o dado está adicionando no registro. PARA ISSO: //
+
+            
+
+        })
+        
+        $(document).on('click','#btnExcluir' ,function () { 
+            alert('messi')
+
+        })
+        
        dolist()
 
         $('#enviar').click(function () {
@@ -55,9 +80,15 @@
 
         for (var posicao in estoqueStorage) {
 
-            var estatic = (estoqueStorage[posicao])
+            var static = (estoqueStorage[posicao])
 
-            var listar = '<tr><td>' +estatic.item+ '</td><td>' +estatic.entrada+ '</td><td>' +estatic.saida+ '</td><td>' +estatic.estoque+ '</td></tr>'
+            var botaoExcluir= '<button id= "btnExcluir" alt="' + posicao +'" class="btn btn-danger btn-sm">excluir</button>'
+
+            var botaoeditar= '<button id= "btnEditar" alt="' + posicao +'" class="btn btn-info btn-sm">editar</button>'
+
+            var acoes= ('<td>' + botaoeditar + botaoExcluir +'</td>')
+
+            var listar = '<tr><td>' + static.item + '</td><td>' + static.entrada + '</td><td>' + static.saida + '</td><td>' + static.estoque + acoes + '</td></tr>'
             $('#list tr:last').after( listar )
 
             console.log(listar)
@@ -124,6 +155,7 @@
                     <th>ENTRADA</th>
                     <th>SAÍDA</th>
                     <th>ESTOQUE</th>
+                    <th>AÇÕES</th>
                 </tbody>
             </table>                      
         </div>

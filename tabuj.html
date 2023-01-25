@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <style>
+        div{
+            
+            margin: 50px;
+            border: solid 1px;
+            padding: 5px;
+            
+            float: left;
+            
+        }
+
+    </style>
+
+
+
+
+    <script>
+        
+        var multi=1
+        teste=1
+
+        document.write('<h1> titulo </h1>')
+        
+        for (let numero = 1; numero<= 10; numero++) {
+            
+            document.write('<div>')
+            document.write('<p> tabuada do '+numero+'</p>')
+
+           
+
+            for (let multi = 1; multi <= 10; multi++) {
+                
+                
+                document.write("<p>"+numero+" x "+multi+" = " +numero*multi+"</p>")
+                
+                
+                
+                
+            
+            }
+
+            document.write('</div>')
+        }
+
+
+    </script>
+
+    
+
+    
+</body>
+</html>
