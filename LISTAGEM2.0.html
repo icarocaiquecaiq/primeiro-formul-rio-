@@ -13,6 +13,9 @@
 </head>
 
 <script>
+
+    var registroSelecionado = -1
+
     $(function () {
 
         
@@ -31,12 +34,34 @@
 
             // em vez de substituir o dado está adicionando no registro. PARA ISSO: //
 
+            // criamos uma variável(registroSelecionado) para assumir o valor da posição. //
+
+            // com o valor da posição, buscamos no LocalStorage a ARRAY em que o valor está inserido, cujo esse, substituirá o valor dos campos//
+
+
+            registroSelecionado = posicao
             
 
         })
         
         $(document).on('click','#btnExcluir' ,function () { 
-            alert('messi')
+
+            var posicao = $(this).attr('alt')
+
+            var estoqueStorage = JSON.parse(localStorage.getItem('stoqx'))
+
+            var static = (estoqueStorage[posicao])
+
+            estoqueStorage.splice(posicao,1) 
+            
+            // o splice possibilita  excluir pela: ('posição' + quantidade) 
+            // a posicao é excluída, mas é imperceptivel. somente atribuido o resultado de volta no LocalStorage.//
+
+            localStorage.setItem("stoqx",JSON.stringify(estoqueStorage)) // ??
+
+            dolist() // executamos o carregamento de novo da lista. apartir de agorra, visualmente ela está atualizada. 
+
+            
 
         })
         
@@ -58,9 +83,26 @@
             if (estoqueStorage == null) {
                 estoqueStorage=[]
             }
-            
-            estoqueStorage.push(objeto)
-            
+
+            if (registroSelecionado > -1) {
+
+                estoqueStorage [registroSelecionado] = {
+                
+                item: $("#item").val(),
+                entrada: $("#entrada").val(),
+                saida: $("#saida").val(),
+                estoque: $("#estoque").val() 
+
+                }
+
+            } 
+
+            else {
+
+                estoqueStorage.push(objeto)
+
+            }
+
             localStorage.setItem("stoqx",JSON.stringify(estoqueStorage))
 
             $('input').val('')
@@ -68,6 +110,8 @@
             
 
             dolist()
+
+            registroSelecionado = - 1
 
         }) 
 
@@ -91,7 +135,7 @@
             var listar = '<tr><td>' + static.item + '</td><td>' + static.entrada + '</td><td>' + static.saida + '</td><td>' + static.estoque + acoes + '</td></tr>'
             $('#list tr:last').after( listar )
 
-            console.log(listar)
+            
 
         }
 
